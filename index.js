@@ -2,6 +2,7 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 
 const { Shape, Square, Triangle, Circle } = require("./lib/shapes");
+const { log } = require("console");
 
 const questions = [
   {
@@ -29,9 +30,6 @@ const questions = [
   },
 ];
 
-function writeToFile(fileName, data) {
-  return fs.writeFileSync(fileName, data);
-}
 // text-color,shape,text,shape-color
 function init(questions) {
   inquirer
@@ -40,39 +38,35 @@ function init(questions) {
       questions
     )
     .then(({ textColor, shape, text, shapeColor }) => {
-      console.log(textColor, shape, text, shapeColor);
-
+      
+      let svg;
       switch (shape) {
         case "Square":
-          shape = new Square();
-          console.log("Square");
+          svg = new Square(shapeColor, text, textColor);
+          console.log("go to output and checkout square");
           break;
 
         case "Triangle":
-          shape = new Triangle();
-          console.log("Triangle");
+          svg = new Triangle(shapeColor, text, textColor);
+          console.log("go to output and checkout triangle");
           break;
 
         default:
-          shape = new Circle();
-          console.log("Circle");
+          svg = new Circle(shapeColor, text, textColor);
+          console.log("go to output and checkout circle");
           break;
       }
-const svg = new Shape()
-svg.setColor(shapeColor)
-svg.setText(text)
-svg.setTextColor(color)
+
+     
       // Use user feedback for... whatever!!
-      writeToFile("examples/shape.svg", svg.render());
+      fs.writeFile("./output/shape.svg", svg.render(), (err) => {
+        console.log(err);
+      });
     })
     .catch((error) => {
-      if (error.isTtyError) {
-        // Prompt couldn't be rendered in the current environment
-        console.log("Prompt couldn't be rendered in the current environment");
-      } else {
-        // Something else went wrong
-        console.log("Something else went wrong");
-      }
+     if (error) {
+      console.log(error);
+     }
     });
 }
 

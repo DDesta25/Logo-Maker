@@ -6,6 +6,10 @@
   ## Description
   
   Designs Logo of your choice
+
+
+VIDEO description of work 
+  https://drive.google.com/file/d/1yrEF8VCublDm1-RIFeIuWNBp0AxultmC/view
   
   ## Table of Contents 
   
@@ -18,7 +22,7 @@
   
   ## Installation
   
-npm install
+npm install Jest and Inquirer 
   
   ## Usage
   

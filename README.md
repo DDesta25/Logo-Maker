@@ -27,7 +27,7 @@ npm install Jest and Inquirer
   ## Usage
   
   
- Generates Logo
+ Generates Logo after the test is run properly
   
   
   
@@ -37,10 +37,13 @@ A short and simple permissive license with conditions only requiring preservatio
   [https://choosealicense.com/licenses/mit/](https://choosealicense.com/licenses/mit/)
 
   
-  ## How to Contribute
-  Daniel tekoladaniel@gmail.com
+  ## Contribute
+  Daniel 
+  tekoladaniel@gmail.com
 
   
   
   ## Tests
   Test
+  npm run test
+  node index.js
